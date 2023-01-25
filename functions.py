@@ -47,12 +47,10 @@ def modify_bot_export(bot_export_file_path):
     # 2) DELETE 'RECORDER' PACKAGE FROM MANIFEST.JSON
     with io.open(manifest_path, 'r', encoding='utf-8-sig') as f:
         manifest_json = json.load(f)
-    recorder_package_indexes = []
-    for index, package in enumerate(manifest_json["packages"]):
-        if package["name"] == 'Recorder':
-            recorder_package_indexes.append(index)
-    for idx in recorder_package_indexes:
-        manifest_json["packages"].pop(idx)
+        
+    elements_to_remove=["Recorder"]
+    manifest_json["packages"] = [d for d in manifest_json["packages"] if d['name'] not in elements_to_remove]
+
     with open(manifest_path, "w") as f:
         f.write(json.dumps(manifest_json))
 
