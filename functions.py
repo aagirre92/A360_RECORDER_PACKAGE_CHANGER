@@ -40,15 +40,15 @@ def modify_bot_export(bot_export_file_path):
         with io.open(file, 'r', encoding='utf-8-sig') as f:
             contents = json.load(f)
         contents_str = json.dumps(contents).replace(old_recorder_version_1, new_recorder_version)
-        contents_str = json.dumps(contents).replace(old_recorder_version_2, new_recorder_version)
+        contents_str = contents_str.replace(old_recorder_version_2, new_recorder_version)
         with open(file, 'w') as f:
             f.write(contents_str)
 
     # 2) DELETE 'RECORDER' PACKAGE FROM MANIFEST.JSON
     with io.open(manifest_path, 'r', encoding='utf-8-sig') as f:
         manifest_json = json.load(f)
-        
-    elements_to_remove=["Recorder"]
+
+    elements_to_remove = ["Recorder"]
     manifest_json["packages"] = [d for d in manifest_json["packages"] if d['name'] not in elements_to_remove]
 
     with open(manifest_path, "w") as f:
