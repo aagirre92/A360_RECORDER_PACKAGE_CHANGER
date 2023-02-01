@@ -39,8 +39,7 @@ def modify_bot_export(bot_export_file_path):
     for file in task_bot_paths:
         with io.open(file, 'r', encoding='utf-8-sig') as f:
             contents = json.load(f)
-        contents_str = json.dumps(contents).replace(old_recorder_version_1, new_recorder_version)
-        contents_str = contents_str.replace(old_recorder_version_2, new_recorder_version)
+        contents_str = json.dumps(contents).replace(old_recorder_version_1, new_recorder_version).replace(old_recorder_version_2, new_recorder_version)
         with open(file, 'w') as f:
             f.write(contents_str)
 
