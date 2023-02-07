@@ -15,9 +15,11 @@ bot exports (.zip) files are located
 ```
 
 For each file in that folder script will:
-* Unzip to a folder
+* Unzip to a (temporary) folder
 * With the folder it will:
   * Loop through all bot files and change the recorder package
   * Change the manifest.json file to remove the recorder key
 * It will zip the modified files, overwriting the original zip file
-* It will remove the unzipped folder, as it's not necessary
+
+Finally script will delete **all the recorder packages within the exported folder, following
+this regex pattern: "bot-command-recorder-.*\.jar"**
