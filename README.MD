@@ -11,7 +11,6 @@ The script accepts one key argument called --path, which indicates a folder wher
 bot exports (.zip) files are located
 ```
 .\main.py --path="C:\....\BOT_EXPORT_PATH"
-
 ```
 
 For each file in that folder script will:
