@@ -2,14 +2,12 @@ import os
 import shutil
 import tempfile
 from argparse import ArgumentParser
-
 import functions as f
 
-# parser = ArgumentParser(description="Modify old recorder package by new. Fixed for STADA project")
-# parser.add_argument("--path", help="Full path of the folder where bot export .zip files are located")
-# args = parser.parse_args()
-# path = str(args.path)
-path = r"C:\Users\Andoni_Aguirre_Arang\Desktop\TEST_RECORDER_CHANGER"
+parser = ArgumentParser(description="Modify old recorder package by new. Fixed for STADA project")
+parser.add_argument("--path", help="Full path of the folder where bot export .zip files are located")
+args = parser.parse_args()
+path = str(args.path)
 os.chdir(path)
 
 for filename in os.listdir(os.getcwd()):
